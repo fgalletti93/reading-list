@@ -6,15 +6,18 @@ function App() {
   const [books, setBooks] = useState([]);
 
   const handleCreateBook = (title) => {
-    console.log('title', title)
-    setBooks(title)
-  }
+    const updatedBooks = [
+      ...books,
+      { id: Math.floor(Math.random() * 9999), title },
+    ];
+    setBooks(updatedBooks);
+  };
 
   return (
-    <>
-      <BookCreate onCreate={handleCreateBook}/>
-      <BookList />
-    </>
+    <div className="app">
+      <BookCreate onCreate={handleCreateBook} />
+      <BookList books={books} />
+    </div>
   );
 }
 
