@@ -13,8 +13,8 @@ function BookShow({ book, onDelete, onEdit }) {
   };
 
   const handleSubmit = (id, updatedTitle) => {
-    onEdit(id, updatedTitle)
     setShowEdit(false);
+    onEdit(id, updatedTitle)
   }
   
   let content = <h3>{book.title}</h3>
@@ -39,13 +39,3 @@ function BookShow({ book, onDelete, onEdit }) {
 }
 
 export default BookShow;
-
-
-
-// {showEdit ? (
-//   <div className="book-edit">
-//     <BookEdit />
-//   </div>
-// ) : (
-//   book.title
-// )}
