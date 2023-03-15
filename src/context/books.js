@@ -1,15 +1,15 @@
 import axios from "axios";
-import { createContext, useCallback, useMemo, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 const BooksContext = createContext();
 
 function Provider({ children }) {
   const [books, setBooks] = useState([]);
 
-  const fetchBooks = async () => {
+  const fetchBooks = useCallback(() => (async () => {
     const { data } = await axios.get("http://localhost:3001/books");
     setBooks(data);
-  };
+  }), []);
 
   const editBookById = async (id, newTitle) => {
     const { data } = await axios.put(`http://localhost:3001/books/${id}`, {
